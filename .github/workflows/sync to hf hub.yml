@@ -17,4 +17,4 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push https://deepsh2207:$HF_TOKEN@huggingface.co/spaces/deepsh2207/Image-to-Text main
+        run: git push --force https://deepsh2207:$HF_TOKEN@huggingface.co/spaces/deepsh2207/Image-to-Text main
