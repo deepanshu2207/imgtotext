@@ -20,9 +20,11 @@ def load_model():
     reader = ocr.Reader(['en'],model_storage_directory='.')
     return reader 
 
-reader = load_model() #load model
 
 if image is not None:
+
+    reader = load_model() #load model
+
 
     input_image = Image.open(image) #read image
     st.image(input_image) #display image
