@@ -14,14 +14,16 @@ st.markdown("Used Github Actions to automatically build the app on any updates o
 #image uploader
 image = st.file_uploader(label = "Upload your image here",type=['png','jpg','jpeg'])
 
+print('Before model load func')
 
 @st.cache_resource
 def load_model(): 
-    reader = ocr.Reader(['en'],model_storage_directory='.')
+    reader = ocr.Reader(['en'], detector='dbnet18', gpu=False, verbose=True, model_storage_directory='.')
     return reader 
 
 
 reader = load_model() #load model
+print('After model load func')
 
 
 if image is not None:
@@ -33,7 +35,7 @@ if image is not None:
 
     with st.spinner("🤖 AI is at Work! "):
         print(np.array(input_image))
-        result = reader.readtext(np.array(input_image))
+        result = reader.readtext(np.array(input_image), batch_size=5)
         print('4. Image Text Read')
 
         result_text = [] #empty list for results
