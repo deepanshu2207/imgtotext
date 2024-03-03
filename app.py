@@ -25,18 +25,20 @@ reader = load_model() #load model
 
 
 if image is not None:
-
+    print('1. Image Added')
     input_image = Image.open(image) #read image
+    print('2. Image Opened')
     st.image(input_image) #display image
+    print('3. Image Showed')
 
     with st.spinner("🤖 AI is at Work! "):
-        
-
+        print(np.array(input_image))
         result = reader.readtext(np.array(input_image))
+        print('4. Image Text Read')
 
         result_text = [] #empty list for results
 
-
+        print(result)
         for text in result:
             result_text.append(text[1])
 
