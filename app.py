@@ -9,13 +9,13 @@ st.title("Easy OCR - Extract Text from Images")
 #subtitle
 st.markdown("## Optical Character Recognition - Using `easyocr`, `streamlit` -  hosted on 🤗 Spaces")
 
-# st.markdown("Link to the app - [image-to-text-app on 🤗 Spaces](https://huggingface.co/spaces/Amrrs/image-to-text-app)")
+st.markdown("Used Github Actions to automatically build the app on any updates on [this github repo link](https://github.com/deepanshu2207/imgtotext)")
 
 #image uploader
 image = st.file_uploader(label = "Upload your image here",type=['png','jpg','jpeg'])
 
 
-@st.cache
+@st.cache_resource
 def load_model(): 
     reader = ocr.Reader(['en'],model_storage_directory='.')
     return reader 
